@@ -5,26 +5,71 @@
   <title>牧野</title>
   <style>
     body {
-      background: #f0f8ff;
-      text-align: center;
-      margin-top: 20%;
+      margin: 0;
+      overflow: hidden;
+      background-color: #f0f8ff;
       font-family: 'Arial', sans-serif;
     }
+    
     .makino {
       font-size: 80px;
       font-weight: bold;
       background: linear-gradient(90deg, #ff6ec4, #7873f5, #4ade80, #facc15, #fb7185);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      animation: rainbow 5s infinite linear;
+      animation: rainbow 5s infinite linear, spin 10s infinite linear;
+      display: inline-block;
+      position: absolute;
+      top: 20%;
+      left: 50%;
+      transform: translateX(-50%);
     }
+
     @keyframes rainbow {
       0% { filter: hue-rotate(0deg); }
       100% { filter: hue-rotate(360deg); }
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    #logo {
+      position: absolute;
+      width: 150px;
     }
   </style>
 </head>
 <body>
   <div class="makino">牧野</div>
+  <img id="logo" src="lwm.png" alt="動く画像">
+
+  <script>
+    const logo = document.getElementById("logo");
+    let x = 100, y = 100;              // 初期位置
+    let dx = 2, dy = 2;                // 移動量（速度）
+
+    function move() {
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+      const logoW = logo.offsetWidth;
+      const logoH = logo.offsetHeight;
+
+      x += dx;
+      y += dy;
+
+      // 端に当たったら反射
+      if (x + logoW >= w || x <= 0) dx *= -1;
+      if (y + logoH >= h || y <= 0) dy *= -1;
+
+      logo.style.left = x + "px";
+      logo.style.top = y + "px";
+
+      requestAnimationFrame(move);
+    }
+
+    move();
+  </script>
 </body>
 </html>
