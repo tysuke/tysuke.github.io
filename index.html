@@ -1,75 +1,388 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <title>牧野</title>
-  <style>
-    body {
-      margin: 0;
-      overflow: hidden;
-      background-color: #f0f8ff;
-      font-family: 'Arial', sans-serif;
-    }
-    
-    .makino {
-      font-size: 80px;
-      font-weight: bold;
-      background: linear-gradient(90deg, #ff6ec4, #7873f5, #4ade80, #facc15, #fb7185);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: rainbow 5s infinite linear, spin 10s infinite linear;
-      display: inline-block;
-      position: absolute;
-      top: 20%;
-      left: 50%;
-      transform: translateX(-50%);
-    }
+<meta charset="UTF-8">
+<title>★☆★ようこそ！たなかたろうのホームページへ！★☆★</title>
+<style>
+  body {
+    background-color: #000080;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20'%3E%3Crect width='10' height='10' fill='%23000088'/%3E%3Crect x='10' y='10' width='10' height='10' fill='%23000088'/%3E%3C/svg%3E");
+    color: #ffff00;
+    font-family: "MS Gothic", "ＭＳ ゴシック", monospace;
+    margin: 0;
+    padding: 10px;
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Ctext y='24' font-size='24'%3E⭐%3C/text%3E%3C/svg%3E") 16 16, auto;
+  }
 
-    @keyframes rainbow {
-      0% { filter: hue-rotate(0deg); }
-      100% { filter: hue-rotate(360deg); }
-    }
+  marquee {
+    background: #ff0000;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 14px;
+    border: 3px solid #ffff00;
+    padding: 4px;
+  }
 
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
+  .main-table {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    border: 4px ridge #c0c0c0;
+    background-color: #c0c0c0;
+    color: #000000;
+  }
 
-    #logo {
-      position: absolute;
-      width: 150px;
-    }
-  </style>
+  .title-area {
+    background: linear-gradient(90deg, #ff0000, #ff7700, #ffff00, #00ff00, #0000ff, #8800ff, #ff0000);
+    background-size: 400% 100%;
+    animation: rainbow 3s linear infinite;
+    text-align: center;
+    padding: 10px;
+    border-bottom: 3px solid #808080;
+  }
+
+  @keyframes rainbow {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 400% 50%; }
+  }
+
+  .title-area h1 {
+    font-size: 28px;
+    color: #ffffff;
+    text-shadow: 2px 2px #000000, -1px -1px #000000;
+    margin: 0;
+    font-family: "MS PGothic", "ＭＳ Ｐゴシック", sans-serif;
+    letter-spacing: 4px;
+  }
+
+  .blink {
+    animation: blink 0.8s step-start infinite;
+  }
+  @keyframes blink {
+    50% { opacity: 0; }
+  }
+
+  .content-area {
+    display: flex;
+    gap: 0;
+  }
+
+  .sidebar {
+    width: 160px;
+    min-width: 160px;
+    background: #000080;
+    color: #ffffff;
+    padding: 8px;
+    border-right: 3px ridge #808080;
+    font-size: 12px;
+  }
+
+  .sidebar a {
+    display: block;
+    color: #ffff00;
+    text-decoration: none;
+    padding: 3px 0;
+    font-size: 13px;
+  }
+  .sidebar a:hover {
+    background: #ffff00;
+    color: #000080;
+  }
+
+  .sidebar-title {
+    background: #808080;
+    color: #ffffff;
+    text-align: center;
+    font-weight: bold;
+    font-size: 11px;
+    padding: 2px;
+    margin-bottom: 4px;
+    border: 2px inset #ffffff;
+  }
+
+  .hit-counter {
+    background: #000000;
+    color: #00ff00;
+    font-family: monospace;
+    font-size: 18px;
+    text-align: center;
+    border: 2px inset #008000;
+    padding: 4px;
+    margin-top: 10px;
+    letter-spacing: 2px;
+  }
+
+  .main-content {
+    flex: 1;
+    padding: 10px;
+    background: #ffffff;
+    color: #000000;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .section-box {
+    border: 3px ridge #808080;
+    margin-bottom: 10px;
+    background: #f0f0f0;
+  }
+
+  .section-title {
+    background: #000080;
+    color: #ffffff;
+    font-weight: bold;
+    padding: 3px 8px;
+    font-size: 13px;
+  }
+
+  .section-body {
+    padding: 8px;
+  }
+
+  table.profile-table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 12px;
+  }
+  table.profile-table td {
+    border: 1px solid #808080;
+    padding: 3px 6px;
+  }
+  table.profile-table td:first-child {
+    background: #000080;
+    color: #ffffff;
+    font-weight: bold;
+    width: 80px;
+    text-align: center;
+  }
+
+  .gif-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    align-items: center;
+  }
+
+  /* Fake animated GIF badges using CSS */
+  .badge {
+    display: inline-block;
+    font-size: 9px;
+    font-weight: bold;
+    padding: 2px 4px;
+    border: 1px solid;
+  }
+  .badge-ie { background:#1166bb; color:#fff; border-color:#0044aa; }
+  .badge-win { background:#0078d7; color:#fff; border-color:#005fa3; }
+  .badge-800 { background:#ff6600; color:#fff; border-color:#cc4400; }
+  .badge-now { background:#ff0000; color:#fff; border-color:#aa0000; animation: blink 1s step-start infinite; }
+
+  .footer-area {
+    background: #808080;
+    color: #ffffff;
+    text-align: center;
+    font-size: 11px;
+    padding: 6px;
+    border-top: 3px ridge #c0c0c0;
+  }
+
+  .stars {
+    color: #ffff00;
+    font-size: 16px;
+  }
+
+  .rainbow-text {
+    background: linear-gradient(90deg, #ff0000, #ff7700, #ffff00, #00ff00, #0000ff, #8800ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: bold;
+  }
+
+  .construction {
+    background: repeating-linear-gradient(
+      45deg,
+      #ffff00,
+      #ffff00 10px,
+      #000000 10px,
+      #000000 20px
+    );
+    color: #ff0000;
+    text-align: center;
+    font-weight: bold;
+    font-size: 12px;
+    padding: 4px;
+    border: 2px solid #ff0000;
+    margin: 6px 0;
+  }
+
+  ul.menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  ul.menu-list li::before {
+    content: "▶ ";
+    color: #ffff00;
+  }
+
+  .diary-entry {
+    border-left: 3px solid #000080;
+    padding-left: 8px;
+    margin-bottom: 8px;
+    font-size: 12px;
+  }
+  .diary-date {
+    color: #0000ff;
+    font-weight: bold;
+    font-size: 11px;
+  }
+
+  .access-count {
+    font-family: "Courier New", monospace;
+  }
+</style>
 </head>
 <body>
-  <div class="makino">牧野</div>
-  <img id="logo" src="lwm.png" alt="動く画像">
 
-  <script>
-    const logo = document.getElementById("logo");
-    let x = 100, y = 100;              // 初期位置
-    let dx = 2, dy = 2;                // 移動量（速度）
+<div style="text-align:center; margin-bottom:6px;">
+  <marquee behavior="scroll" direction="left" scrollamount="4">
+    ★ ようこそ！たなかたろうのホームページへ！ ★　　最終更新：2004年3月21日　　アクセスありがとうございます！　★ ようこそ！たなかたろうのホームページへ！ ★
+  </marquee>
+</div>
 
-    function move() {
-      const w = window.innerWidth;
-      const h = window.innerHeight;
-      const logoW = logo.offsetWidth;
-      const logoH = logo.offsetHeight;
+<table class="main-table" cellpadding="0" cellspacing="0">
+  <!-- タイトルエリア -->
+  <tr>
+    <td colspan="2" class="title-area">
+      <h1>★☆ たなかたろうの部屋 ☆★</h1>
+      <div style="color:#ffffff; font-size:13px; text-shadow:1px 1px #000;">
+        ～ <span class="blink">Welcome!!</span> ～ ここは僕の個人ホームページです ～
+      </div>
+    </td>
+  </tr>
 
-      x += dx;
-      y += dy;
+  <!-- メインコンテンツ -->
+  <tr>
+    <td style="vertical-align:top;">
+      <!-- サイドバー -->
+      <div class="sidebar">
+        <div class="sidebar-title">★ メニュー ★</div>
+        <ul class="menu-list">
+          <li><a href="#">トップ</a></li>
+          <li><a href="#">プロフィール</a></li>
+          <li><a href="#">日記</a></li>
+          <li><a href="#">好きなもの</a></li>
+          <li><a href="#">掲示板</a></li>
+          <li><a href="#">リンク集</a></li>
+          <li><a href="#">メール</a></li>
+        </ul>
 
-      // 端に当たったら反射
-      if (x + logoW >= w || x <= 0) dx *= -1;
-      if (y + logoH >= h || y <= 0) dy *= -1;
+        <div class="sidebar-title" style="margin-top:10px;">★ カウンター ★</div>
+        <div class="hit-counter">
+          0<span id="counter">03721</span>
+        </div>
+        <div style="font-size:10px; text-align:center; margin-top:2px; color:#aaaaff;">あなたは<br><span class="blink" style="color:#ffff00;">3722</span>番目の<br>お客様です！</div>
 
-      logo.style.left = x + "px";
-      logo.style.top = y + "px";
+        <div class="sidebar-title" style="margin-top:10px;">★ 推奨環境 ★</div>
+        <div style="font-size:10px; line-height:1.8;">
+          IE 6.0以上<br>
+          800×600以上<br>
+          BGMあり
+        </div>
 
-      requestAnimationFrame(move);
-    }
+        <div class="sidebar-title" style="margin-top:10px;">★ バナー ★</div>
+        <div class="gif-row" style="flex-direction:column;">
+          <span class="badge badge-ie">IE推奨</span>
+          <span class="badge badge-win">WinXP</span>
+          <span class="badge badge-800">800×600</span>
+          <span class="badge badge-now">NEW!</span>
+        </div>
+      </div>
+    </td>
 
-    move();
-  </script>
+    <td style="vertical-align:top;">
+      <div class="main-content">
+
+        <!-- 工事中バナー -->
+        <div class="construction">
+          🚧 このページは工事中です！ご不便をおかけします 🚧
+        </div>
+
+        <!-- プロフィール -->
+        <div class="section-box">
+          <div class="section-title">📋 プロフィール</div>
+          <div class="section-body">
+            <table class="profile-table">
+              <tr><td>名前</td><td>たなか たろう（田中太郎）</td></tr>
+              <tr><td>年齢</td><td>22歳（1982年生まれ）</td></tr>
+              <tr><td>出身</td><td>茨城県つくば市</td></tr>
+              <tr><td>職業</td><td>大学院生（情報系）</td></tr>
+              <tr><td>趣味</td><td>ネットサーフィン、ゲーム、アニメ</td></tr>
+              <tr><td>好きな食べ物</td><td>ラーメン、カレー</td></tr>
+              <tr><td>一言</td><td><span class="rainbow-text">よろしくお願いします！！</span></td></tr>
+            </table>
+          </div>
+        </div>
+
+        <!-- 日記 -->
+        <div class="section-box">
+          <div class="section-title">📓 最新日記</div>
+          <div class="section-body">
+            <div class="diary-entry">
+              <div class="diary-date">2004年3月21日（日）</div>
+              <div>ホームページ作りました！初めてのホームページなのでまだまだですが、これからどんどん更新していきたいと思います。掲示板も作ったのでよかったら書き込んでください！</div>
+            </div>
+            <div class="diary-entry">
+              <div class="diary-date">2004年3月19日（金）</div>
+              <div>HTML の勉強をはじめました。タグって意外とむずかしい…でもがんばります。GeoCitiesのサーバー借りました。無料なのにすごいですよね！</div>
+            </div>
+            <div style="text-align:right; font-size:11px;"><a href="#" style="color:#0000ff;">▶ 日記一覧へ</a></div>
+          </div>
+        </div>
+
+        <!-- 好きなもの -->
+        <div class="section-box">
+          <div class="section-title">💖 好きなもの</div>
+          <div class="section-body" style="font-size:12px;">
+            <span class="stars">★</span> ゲーム：ファイナルファンタジー、ドラクエ、ポケモン<br>
+            <span class="stars">★</span> アニメ：エヴァ、ガンダム<br>
+            <span class="stars">★</span> 音楽：J-POP全般<br>
+            <span class="stars">★</span> パソコン：自作PC、Linux<br>
+            <span class="stars">★</span> ネット：2ちゃんねる、ネットゲーム
+          </div>
+        </div>
+
+        <!-- リンク -->
+        <div class="section-box">
+          <div class="section-title">🔗 リンク集</div>
+          <div class="section-body" style="font-size:12px;">
+            <a href="#" style="color:#0000ff;">▶ Yahoo! JAPAN</a><br>
+            <a href="#" style="color:#0000ff;">▶ Google</a><br>
+            <a href="#" style="color:#0000ff;">▶ 2ちゃんねる</a><br>
+            <a href="#" style="color:#0000ff;">▶ 友達のHP（けんじくん）</a>
+          </div>
+        </div>
+
+      </div>
+    </td>
+  </tr>
+
+  <!-- フッター -->
+  <tr>
+    <td colspan="2" class="footer-area">
+      <span class="stars">★ ★ ★</span>
+      Copyright &copy; 2004 たなかたろう All Rights Reserved.
+      <span class="stars">★ ★ ★</span><br>
+      <span style="font-size:10px;">当サイトへのリンクはフリーです。バナーのご利用もどうぞ！<br>
+      無断転載・コピーは禁止します。</span><br>
+      <span style="font-size:10px; color:#ffff00;">最終更新：2004年3月21日 23:47</span>
+    </td>
+  </tr>
+</table>
+
+<div style="text-align:center; margin-top:6px; font-size:10px; color:#aaaaff;">
+  このページはInternet Explorer 6.0 / 800×600で最適化されています
+</div>
+
 </body>
 </html>
