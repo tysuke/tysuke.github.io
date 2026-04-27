@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>ポートフォリオ ～ 戦慄部屋</title>
+<title>ライブレポート ～ 戦慄部屋</title>
 <style>
   body {
     background-color: #000080;
@@ -91,6 +91,19 @@
     line-height: 1.6;
     vertical-align: top;
   }
+  .section-box {
+    border: 3px ridge #808080;
+    margin-bottom: 14px;
+    background: #f0f0f0;
+  }
+  .section-title {
+    background: #000080;
+    color: #ffffff;
+    font-weight: bold;
+    padding: 3px 8px;
+    font-size: 13px;
+  }
+  .section-body { padding: 10px; }
   .back-link {
     display: inline-block;
     background: #000080;
@@ -103,72 +116,54 @@
   }
   .back-link:hover { background: #ffff00; color: #000080; }
 
-  /* タブ */
-  .tab-bar {
-    display: flex;
-    gap: 2px;
-    margin-bottom: 0;
-  }
-  .tab-btn {
-    background: #808080;
-    color: #ffffff;
-    border: 2px outset #c0c0c0;
-    padding: 4px 16px;
-    font-size: 13px;
-    font-family: "MS Gothic", monospace;
-    cursor: pointer;
-    border-bottom: none;
-  }
-  .tab-btn:hover { background: #aaaaaa; }
-  .tab-btn.active {
-    background: #000080;
-    color: #ffff00;
-    font-weight: bold;
-    border-color: #c0c0c0;
-  }
-
-  .tab-content {
-    display: none;
-    border: 3px ridge #808080;
-    background: #f0f0f0;
-    padding: 12px;
-  }
-  .tab-content.active { display: block; }
-
-  /* 写真グリッド */
-  .photo-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
-  }
-  .photo-item {
-    border: 2px inset #808080;
+  /* ライブレポートカード */
+  .live-entry {
+    border: 2px ridge #808080;
     background: #ffffff;
-    text-align: center;
-    padding: 4px;
+    margin-bottom: 12px;
   }
-  .photo-item img {
-    width: 100%;
-    height: 140px;
-    object-fit: cover;
-    display: block;
-  }
-  /* ダミー枠 */
-  .photo-dummy {
-    width: 100%;
-    height: 140px;
-    background: #cccccc;
+  .live-header {
+    background: #000080;
+    color: #ffffff;
+    padding: 4px 8px;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
-    color: #666666;
-    font-size: 11px;
-    border: 2px dashed #888888;
-    box-sizing: border-box;
+    font-size: 12px;
   }
-  .photo-caption {
+  .live-artist {
+    font-weight: bold;
+    font-size: 14px;
+    color: #ffff00;
+  }
+  .live-date {
     font-size: 11px;
-    color: #333333;
+    color: #ccccff;
+  }
+  .live-body {
+    padding: 8px 10px;
+  }
+  .live-meta {
+    display: flex;
+    gap: 16px;
+    font-size: 11px;
+    color: #555555;
+    margin-bottom: 6px;
+    border-bottom: 1px dotted #aaaaaa;
+    padding-bottom: 4px;
+  }
+  .live-meta span::before {
+    color: #000080;
+    font-weight: bold;
+  }
+  .live-comment {
+    font-size: 12px;
+    color: #222222;
+    line-height: 1.8;
+  }
+  .live-rating {
+    color: #ff6600;
+    font-size: 14px;
     margin-top: 4px;
   }
 
@@ -187,16 +182,16 @@
 
 <div style="text-align:center; margin-bottom:6px;">
   <marquee behavior="scroll" direction="left" scrollamount="4">
-    ★ 戦慄部屋 ポートフォリオ ★　　フライヤーとか陶芸とか　★ 戦慄部屋 ポートフォリオ ★
+    ★ 戦慄部屋 ライブレポート ★　　行ったライブの記録　★ 戦慄部屋 ライブレポート ★
   </marquee>
 </div>
 
 <table class="main-table" cellpadding="0" cellspacing="0">
   <tr>
     <td colspan="2" class="title-area">
-      <h1>🎨 作品集 🎨</h1>
+      <h1>🎤 ライブレポート 🎤</h1>
       <div style="color:#ffffff; font-size:13px; text-shadow:1px 1px #000;">
-        ～ つくったものたち ～
+        ～ 行ったライブの記録 ～
       </div>
     </td>
   </tr>
@@ -207,8 +202,8 @@
       <ul class="menu-list">
         <li><a href="index.html">トップ</a></li>
         <li><a href="diary.html">日記</a></li>
-        <li><a href="portfolio.html" class="current">ポートフォリオ</a></li>
-        <li><a href="live.html">ライブレポート</a></li>
+        <li><a href="portfolio.html">ポートフォリオ</a></li>
+        <li><a href="live.html" class="current">ライブレポート</a></li>
         <li><a href="links.html">リンク集</a></li>
       </ul>
       <div class="sidebar-title" style="margin-top:10px;">★ 推奨環境 ★</div>
@@ -225,53 +220,36 @@
     <td class="main-content">
       <a href="index.html" class="back-link">◀ トップへ戻る</a>
 
-      <!-- タブ -->
-      <div class="tab-bar">
-        <button class="tab-btn active" onclick="switchTab('flyer')">🖼 フライヤー</button>
-        <button class="tab-btn" onclick="switchTab('pottery')">🏺 陶芸</button>
-      </div>
+      <div class="section-box">
+        <div class="section-title">🎤 ライブ一覧（新しい順）</div>
+        <div class="section-body">
 
-      <!-- フライヤー -->
-      <div id="tab-flyer" class="tab-content active">
-        <div class="photo-grid">
-          <div class="photo-item">
-            <!-- 写真を追加するときは↓のdivをimgタグに差し替える -->
-            <!-- <img src="images/flyer1.jpg" alt="フライヤー1"> -->
-            <div class="photo-dummy">写真を追加</div>
-            <div class="photo-caption">タイトル</div>
+          <!-- ライブを追加するときはこのブロックをコピペして上に追加する -->
+
+          <div class="live-entry">
+            <div class="live-header">
+              <span class="live-artist">アーティスト名</span>
+              <span class="live-date">2026年4月XX日</span>
+            </div>
+            <div class="live-body">
+              <div class="live-meta">
+                <span>📍 会場名</span>
+              </div>
+              <div class="live-comment">
+                ここに感想を書く。数行くらい。
+              </div>
+              <div class="live-rating">★★★★☆</div>
+            </div>
           </div>
-          <div class="photo-item">
-            <div class="photo-dummy">写真を追加</div>
-            <div class="photo-caption">タイトル</div>
-          </div>
-          <div class="photo-item">
-            <div class="photo-dummy">写真を追加</div>
-            <div class="photo-caption">タイトル</div>
-          </div>
+
+          <!-- ↑ここまでがひとつのブロック -->
+
         </div>
       </div>
 
-      <!-- 陶芸 -->
-      <div id="tab-pottery" class="tab-content">
-        <div class="photo-grid">
-          <div class="photo-item">
-            <!-- <img src="images/pottery1.jpg" alt="陶芸1"> -->
-            <div class="photo-dummy">写真を追加</div>
-            <div class="photo-caption">タイトル</div>
-          </div>
-          <div class="photo-item">
-            <div class="photo-dummy">写真を追加</div>
-            <div class="photo-caption">タイトル</div>
-          </div>
-          <div class="photo-item">
-            <div class="photo-dummy">写真を追加</div>
-            <div class="photo-caption">タイトル</div>
-          </div>
-        </div>
-      </div>
-
-      <div style="font-size:11px; color:#666666; margin-top:10px;">
-        ※ 写真を追加するには <code>images/</code> フォルダに画像を入れて、コメントアウトされたimgタグを有効にしてください
+      <div style="font-size:11px; color:#666666;">
+        ※ ライブを追加するときは live-entry のブロックをコピペして上に追加してください<br>
+        ※ ★の数は好みで変えてOKです（★★★★★ ～ ☆☆☆☆☆）
       </div>
     </td>
   </tr>
@@ -289,15 +267,6 @@
 <div style="text-align:center; margin-top:6px; font-size:10px; color:#aaaaff;">
   このページはInternet Explorer 6.0 / 800×600で最適化されています
 </div>
-
-<script>
-  function switchTab(name) {
-    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
-    document.getElementById('tab-' + name).classList.add('active');
-    event.target.classList.add('active');
-  }
-</script>
 
 </body>
 </html>
